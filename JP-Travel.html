@@ -8,25 +8,30 @@
 </head>
 
 <body>
+  <!--------- header nav ---------->
+  <header class="top">
+    <div class="top-nav">
+      <div class="nav-inner">
 
-  <header>
-    <a href="/" class="logo-container">
-      <img src="./images/c5cf8038b8781bb5b97c025921832603.jpg" alt="網站名稱" class="logo-img">
-      <h1>Japan Travel Guide</h1>
-      <nav>
-        <a href="JP-Travel.html">Home</a>
-        <a href="destination.html">Destinations</a>
-        <a href="Things to do.html">Things to do</a>
-        <a href="plan.html">Plan</a>
-      </nav>
+        <h1 class="logo">Japan Travel Guide</h1>
+
+        <nav>
+          <a href="JP-Travel.html">Home</a>
+          <a href="destination.html">Destinations</a>
+          <a href="Things to do.html">Things to do</a>
+          <a href="plan.html">Plan</a>
+        </nav>
+
+        <div class="auth">
+          <a href="#" class="signin">Sign in</a>
+        </div>
+
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h2>Explore Japan</h2>
-      <p>Discover Kanto, Kansai and more</p>
-    </div>
-  </section>
+
+
 
   <main>
     <section class="intro">
@@ -36,20 +41,39 @@
 
     <section class="destinations">
       <h2>Popular areas</h2>
+
       <div class="cards">
-        <div class="card">
-          Kanto
-        </div>
-        <div class="card">Kansai</div>
-        <div class="card">Kyushu</div>
+        <a href="./city/Kyoto.html" class="card">Kyoto</a>
+        <a href="./city/Nagoya.html" class="card">Nagoya</a>
+        <a href="./city/Tokyo.html" class="card">Tokyo</a>
       </div>
     </section>
+
   </main>
 
+  <!--------- js ---------->
+  <script>
+    const heroTop = document.querySelector('.top-nav');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        heroTop.classList.add('scrolled');
+      } else {
+        heroTop.classList.remove('scrolled');
+      }
+    });
+
+
+  </script>
 
   <footer>
     <p>© 2026 Japan Travel (Student Project)</p>
   </footer>
+  <br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br>
 
 </body>
 
