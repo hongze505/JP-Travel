@@ -5,18 +5,19 @@
   --soft-gray: #f5f5f5;
   --japan-red: #c9171e;
 }
-
-/* ---------- Body ---------- */
+/* ---------- 整個頁面 ---------- */
 body {
   margin: 0;
   font-family: "Noto Sans JP", Arial, sans-serif;
   line-height: 1.8;
   color: var(--main-black);
-}
-
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+  color: #222;
+} 
 /* ---------- Header ---------- */ 
  header.top {
-  background-image: url(../images/pexels-evgeny-tchebotarev-1058775-2187605.jpg);
+  background-image: url(../images/pexels-apasaric-1344537.jpg);
   background-size: cover;
   background-position: 10% 55%;
   height: 600px;
@@ -24,12 +25,18 @@ body {
   position: relative;
 }
 
-/* header.top::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35); 
-} */
+/* ---------- header的標題 ---------- */ 
+.title{
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: white;
+  font-size: 64px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
 /* ---------- Top Nav (fixed 背景) ---------- */
 /* 初始 nav 透明 */
@@ -48,7 +55,6 @@ body {
 .top-nav.scrolled {
   background-color: rgba(98, 97, 97, 0.85);
 }
-
 
 
 /* ---------- Nav 內容置中 ---------- */
@@ -118,76 +124,59 @@ nav a:hover {
 }
 
 
-/* ---------- Main ---------- */
-main {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
 
-main h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
+  /* body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: #ffffff;
+    padding: 40px;
+    color: #222;
+  } */
 
-main p {
-  font-size: 18px;
-  color: var(--text-gray);
-}
+  h2 {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+  }
 
-/* ---------- Cards ---------- */
-.cards{
-  display: flex;
-  gap: 20px;              /* 卡片之間的距離 */
-  justify-content: center; /* 整排置中 */
+  select, button {
+    padding: 6px 10px;
+    margin-right: 12px;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    font-size: 14px;
+  }
 
-}
+  button {
+    color: #222;
+    cursor: pointer;
+  }
 
-.card {
-  width: 350px;
-  height: 300px;
-  
-  display: flex;
-  align-items: center;   
-  justify-content: center;
+  button:hover {
+    background: #f7f7f7;
+  }
 
-  color: var(--soft-gray);
-  font-size: 28px;
-  font-weight: bold;
-  text-decoration: none;
+  #result {
+    margin-top: 40px;
+    max-width: 640px;
+  }
 
-  
-  border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+  #result > div {
+    padding: 24px 0;
+    border-bottom: 1px solid #eee;
+  }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
+  #result > div:last-child {
+    border-bottom: none;
+  }
 
-.kyoto {
-  background-size: cover;
-  background-position: center 35%;
-  background-image: url("../images/kyoto.jpg");
-}
+  h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
 
-.fuji{
-  background-size: cover;
-  background-position: center 50%;
-  background-image: url("../images/tokyo.jpg");
-}
-.nagoya {
-  background-size: cover;
-  background-position: center 90%;
-  background-image: url("../images/nagoya.jpg");
-}
-
-/* ---------- Footer ---------- */
-footer {
-  padding: 40px;
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-gray);
-  border-top: 1px solid #eee;
-}
+  p {
+    font-size: 14px;
+    color: #666;
+  }
