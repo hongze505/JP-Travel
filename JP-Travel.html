@@ -21,20 +21,31 @@
           <a href="Things to do.html">Things to do</a>
           <a href="plan.html">Plan</a>
         </nav>
+
+        <div class="search-wrap">
+          <div class="search-btn">
+            <span class="search-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="16" y1="16" x2="22" y2="22" />
+              </svg>
+            </span>
+            <span class="search-text">Search</span>
+          </div>
+
+          <input type="text" class="search-input" placeholder="Search..." />
+        </div>
+
+
         <a href="sign-in.html" class="signin">Sign in</a>
       </div>
     </div>
 
+
+
   </header>
-
-
-
-
+  <!--------- main ---------->
   <main>
-    <!-- <section class="intro">
-      <h2>關於日本</h2>
-      <p>Japan is a country full of culture, food and beautiful scenery.</p>
-    </section> -->
 
     <section class="destinations">
       <h2>Popular areas</h2>
@@ -50,25 +61,56 @@
 
   <!--------- js ---------->
   <script>
-    const heroTop = document.querySelector('.top-nav');
 
+    const topNav = document.querySelector('.top-nav');
+
+    // 滾動變色
     window.addEventListener('scroll', () => {
       if (window.scrollY > 80) {
-        heroTop.classList.add('scrolled');
+        topNav.classList.add('scrolled');
       } else {
-        heroTop.classList.remove('scrolled');
+        topNav.classList.remove('scrolled');
       }
     });
+
+    const searchWrap = document.querySelector('.search-wrap');
+    const searchBtn = document.querySelector('.search-btn');
+    const searchInput = document.querySelector('.search-input');
+
+    // 點擊搜尋按鈕，切換展開
+    searchBtn.addEventListener('click', () => {
+      searchWrap.classList.toggle('active');
+
+      // 如果展開，focus 輸入框
+      if (searchWrap.classList.contains('active')) {
+        searchInput.focus();
+      }
+    });
+
+    // 按下 Enter 可以提交搜尋（可選）
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        alert(`搜尋: ${searchInput.value}`);
+        // 這裡可以改成真正搜尋功能
+      }
+    });
+    document.addEventListener('click', (e) => {
+      // 如果點擊不是 searchWrap 內部，收回
+      if (!searchWrap.contains(e.target)) {
+        searchWrap.classList.remove('active');
+      }
+    });
+
+
+
+
   </script>
 
   <footer>
     <p>© 2026 Japan Travel (Student Project)</p>
   </footer>
   <br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br>
+
 
 </body>
 

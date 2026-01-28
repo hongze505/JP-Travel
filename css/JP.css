@@ -24,13 +24,6 @@ body {
   position: relative;
 }
 
-/* header.top::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35); 
-} */
-
 /* ---------- Top Nav (fixed 背景) ---------- */
 /* 初始 nav 透明 */
 .top-nav {
@@ -115,6 +108,107 @@ nav a:hover {
 .signin:hover {
   background-color: white;
   color: var(--text-gray);
+}
+
+/* ---------- Search Button ---------- */
+
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 搜尋按鈕 - 跟 signin 一樣 */
+.search-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: white;
+  background-color: transparent;
+
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 25px;
+
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.search-btn:hover {
+  background-color: white;
+  color: var(--text-gray); /* 你的 text-gray: #666 */
+}
+
+.search-icon {
+display: flex;
+align-items: center;
+
+}
+
+.search-icon svg {
+  stroke: white;
+  fill: none;
+  stroke-width: 2.4;
+  transition: stroke 0.3s ease;
+}
+
+.search-btn:hover .search-icon svg {
+  stroke: var(--text-gray); /* #666 */
+}
+
+.search-text {
+  user-select: none;
+}
+
+/* 輸入框初始隱藏 */
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 20px;
+  font-size: 16px;
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  font-weight: bold;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+/* focus 狀態邊框顏色變色 */
+.search-input:focus {
+  border-color: var(--soft-gray);
+}
+
+/* 展開時 */
+.search-wrap.active .search-input {
+  width: 180px;
+  opacity: 1;
+  padding: 6px 14px;
+  background-color: white;
+  color: var(--main-black);
+}
+
+/* 展開時隱藏文字，只留 icon */
+.search-wrap.active .search-text {
+  display: none;
+}
+
+/* 展開時搜尋按鈕縮小成圓形，只留 icon */
+.search-wrap.active .search-btn {
+  padding: 6px;
+  width: 40px;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 

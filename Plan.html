@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>Japan Travel Guide - Plan</title>
     <link rel="stylesheet" href="./css/plan.css">
-
 </head>
 
 <body>
+    <!-- Header -->
     <header class="top">
         <div class="top-nav">
             <div class="nav-inner">
@@ -26,64 +27,214 @@
         </div>
     </header>
 
-    <select id="city">
-        <option value="tokyo">Tokyo</option>
-        <option value="kyoto">Kyoto</option>
-    </select>
+    <!-- Main Booking Widget -->
+    <main class="plan-wrapper">
+        <div class="booking-widget">
+            <h2>Plan your <span>trip</span></h2>
 
-    <select id="days">
-        <option value="1">1 day</option>
-        <option value="2">2 days</option>
-        <option value="3">3 days</option>
-    </select>
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" data-tab="stays">Stays</button>
+                <button class="tab" data-tab="flights">Flights</button>
+                <button class="tab" data-tab="activities">Activities</button>
+                <button class="tab" data-tab="food">Food</button>
+            </div>
 
-    <button id="generate">Generate plan</button>
-    <div id="result"></div>
+            <!-- Booking Forms -->
+            <div class="booking-form">
 
+                <!-- Stays -->
+                <div class="form-content" id="stays">
+                    <div class="field">
+                        <label>City</label>
+                        <select id="bw-city">
+                            <option>Tokyo</option>
+                            <option>Kyoto</option>
+                            <option>Nagoya</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Check-in</label>
+                        <input type="date" id="bw-date">
+                    </div>
+                    <div class="field">
+                        <label>Nights</label>
+                        <select id="bw-nights">
+                            <option>1 night</option>
+                            <option>2 nights</option>
+                            <option>3 nights</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>People</label>
+                        <select id="bw-people">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" id="bw-search">Search Stays →</button>
+                </div>
+
+                <!-- Flights -->
+                <div class="form-content" id="flights" style="display:none;">
+                    <div class="field">
+                        <label>From</label>
+                        <input type="text" id="flight-from" placeholder="Tokyo">
+                    </div>
+                    <div class="field">
+                        <label>To</label>
+                        <input type="text" id="flight-to" placeholder="Nagoya">
+                    </div>
+                    <div class="field">
+                        <label>Departure</label>
+                        <input type="date" id="flight-depart">
+                    </div>
+                    <div class="field">
+                        <label>Return</label>
+                        <input type="date" id="flight-return">
+                    </div>
+                    <div class="field">
+                        <label>People</label>
+                        <select id="flight-people">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" id="flight-search">Search Flights →</button>
+                </div>
+
+                <!-- Activities -->
+                <div class="form-content" id="activities" style="display:none;">
+                    <div class="field">
+                        <label>City</label>
+                        <select id="act-city">
+                            <option>Tokyo</option>
+                            <option>Kyoto</option>
+                            <option>Nagoya</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Date</label>
+                        <input type="date" id="act-date">
+                    </div>
+                    <div class="field">
+                        <label>People</label>
+                        <select id="act-people">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" id="act-search">Search Activities →</button>
+                </div>
+
+                <!-- Food -->
+                <div class="form-content" id="food" style="display:none;">
+                    <div class="field">
+                        <label>City</label>
+                        <select id="food-city">
+                            <option>Tokyo</option>
+                            <option>Kyoto</option>
+                            <option>Nagoya</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Date</label>
+                        <input type="date" id="food-date">
+                    </div>
+                    <div class="field">
+                        <label>People</label>
+                        <select id="food-people">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" id="food-search">Search Food →</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- JS -->
     <script>
-        const plans = {
-            tokyo: {
-                1: [["Asakusa", "Skytree"]],
-                2: [
-                    ["Asakusa", "Ueno"],
-                    ["Shibuya", "Harajuku"]
-                ],
-                3: [
-                    ["Asakusa", "Ueno"],
-                    ["Shibuya", "Harajuku"],
-                    ["Akihabara"]
-                ]
-            },
-            kyoto: {
-                1: [
-                    ["Gion", "Kiyomizu-dera"]
-                ],
-                2: [
-                    ["Fushimi Inari", "Gion"],
-                    ["Arashiyama"]
-                ],
-                3: [
-                    ["Gion", "Kiyomizu-dera"],
-                    ["Fushimi Inari", "Gion"],
-                    ["Arashiyama"]
-                ]
+        const topNav = document.querySelector('.top-nav');
+
+        // 滾動變色
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                topNav.classList.add('scrolled');
+            } else {
+                topNav.classList.remove('scrolled');
             }
+        });
 
-        };
-        document.getElementById("generate").onclick = () => {
-            const city = document.getElementById("city").value;
-            const days = document.getElementById("days").value;
-            const result = document.getElementById("result");
 
-            result.innerHTML = "";
+        <!-- JS -->
 
-            plans[city][days].forEach((day, index) => {
-                const div = document.createElement("div");
-                div.innerHTML = `<h3>Day ${index + 1}</h3><p>${day.join(" → ")}</p>`;
-                result.appendChild(div);
+        // Tab 切換
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.form-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const target = tab.dataset.tab;
+                contents.forEach(c => c.style.display = (c.id === target ? 'grid' : 'none'));
             });
-        };
+        });
 
+        // Booking.com 搜尋
+        document.getElementById("bw-search").addEventListener("click", () => {
+            const city = document.getElementById("bw-city").value;
+            const checkin = document.getElementById("bw-date").value;
+            const nights = parseInt(document.getElementById("bw-nights").value);
+            if (!checkin) { alert("Please select a check-in date"); return; }
+
+            const checkinDate = new Date(checkin);
+            const checkoutDate = new Date(checkinDate);
+            checkoutDate.setDate(checkoutDate.getDate() + nights);
+            const checkout = checkoutDate.toISOString().split("T")[0];
+
+            const url = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(city)}&checkin=${checkin}&checkout=${checkout}`;
+            window.open(url, "_blank");
+        });
+
+        // Flights Skyscanner 搜尋
+        document.getElementById("flight-search").addEventListener("click", () => {
+            const from = document.getElementById("flight-from").value;
+            const to = document.getElementById("flight-to").value;
+            const depart = document.getElementById("flight-depart").value;
+            const ret = document.getElementById("flight-return").value;
+            if (!from || !to || !depart) { alert("Please fill From, To and Departure"); return; }
+
+            const skyscannerURL = `https://www.skyscanner.com/transport/flights/${from}/${to}/${depart.replace(/-/g, "")}/${ret ? ret.replace(/-/g, "") : ""}/`;
+            window.open(skyscannerURL, "_blank");
+        });
+
+        // Activities Klook
+        document.getElementById("act-search").addEventListener("click", () => {
+            const city = document.getElementById("act-city").value;
+            const date = document.getElementById("act-date").value;
+            if (!date) { alert("Please select a date"); return; }
+            const url = `https://www.klook.com/en-US/search?query=${encodeURIComponent(city)}`;
+            window.open(url, "_blank");
+        });
+
+        // Food 日本訂餐網站（以 tabelog 範例）
+        document.getElementById("food-search").addEventListener("click", () => {
+            const city = document.getElementById("food-city").value;
+            const url = `https://tabelog.com/en/${city.toLowerCase()}/`;
+            window.open(url, "_blank");
+        });
     </script>
 </body>
 

@@ -5,16 +5,15 @@
   --soft-gray: #f5f5f5;
   --japan-red: #c9171e;
 }
-/* ---------- 整個頁面 ---------- */
+
+/* ---------- Body ---------- */
 body {
   margin: 0;
   font-family: "Noto Sans JP", Arial, sans-serif;
   line-height: 1.8;
   color: var(--main-black);
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  background: #ffffff;
-  color: #222;
-} 
+}
+
 /* ---------- Header ---------- */ 
  header.top {
   background-image: url(../images/pexels-apasaric-1344537.jpg);
@@ -25,17 +24,18 @@ body {
   position: relative;
 }
 
-/* ---------- header的標題 ---------- */ 
+/* title */
 .title{
-   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);/*完全置中*/
 
-  color: white;
-  font-size: 64px;
-  font-weight: bold;
-  letter-spacing: 2px;
+ color: #fff;
+ font-size: 80px;
+ font-weight: bold;
+ text-align: center;
+ letter-spacing: 2px;
 }
 
 /* ---------- Top Nav (fixed 背景) ---------- */
@@ -55,6 +55,7 @@ body {
 .top-nav.scrolled {
   background-color: rgba(98, 97, 97, 0.85);
 }
+
 
 
 /* ---------- Nav 內容置中 ---------- */
@@ -123,60 +124,201 @@ nav a:hover {
   color: var(--text-gray);
 }
 
+/* ---------- Search Button ---------- */
 
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  /* body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    background: #ffffff;
-    padding: 40px;
-    color: #222;
-  } */
+/* 搜尋按鈕 - 跟 signin 一樣 */
+.search-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-  h2 {
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin-bottom: 24px;
-  }
+  color: white;
+  background-color: transparent;
 
-  select, button {
-    padding: 6px 10px;
-    margin-right: 12px;
-    border-radius: 4px;
-    border: 1px solid #e5e5e5;
-    background: #fff;
-    font-size: 14px;
-  }
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 25px;
 
-  button {
-    color: #222;
-    cursor: pointer;
-  }
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
 
-  button:hover {
-    background: #f7f7f7;
-  }
+  cursor: pointer;
 
-  #result {
-    margin-top: 40px;
-    max-width: 640px;
-  }
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
 
-  #result > div {
-    padding: 24px 0;
-    border-bottom: 1px solid #eee;
-  }
+.search-btn:hover {
+  background-color: white;
+  color: var(--text-gray); /* 你的 text-gray: #666 */
+}
 
-  #result > div:last-child {
-    border-bottom: none;
-  }
+.search-icon {
+display: flex;
+align-items: center;
 
-  h3 {
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
+}
 
-  p {
-    font-size: 14px;
-    color: #666;
-  }
+.search-icon svg {
+  stroke: white;
+  fill: none;
+  stroke-width: 2.4;
+  transition: stroke 0.3s ease;
+}
+
+.search-btn:hover .search-icon svg {
+  stroke: var(--text-gray); /* #666 */
+}
+
+.search-text {
+  user-select: none;
+}
+
+/* 輸入框初始隱藏 */
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 20px;
+  font-size: 16px;
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  font-weight: bold;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+/* focus 狀態邊框顏色變色 */
+.search-input:focus {
+  border-color: var(--soft-gray);
+}
+
+/* 展開時 */
+.search-wrap.active .search-input {
+  width: 180px;
+  opacity: 1;
+  padding: 6px 14px;
+  background-color: white;
+  color: var(--main-black);
+}
+
+/* 展開時隱藏文字，只留 icon */
+.search-wrap.active .search-text {
+  display: none;
+}
+
+/* 展開時搜尋按鈕縮小成圓形，只留 icon */
+.search-wrap.active .search-btn {
+  padding: 6px;
+  width: 40px;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/*----- main  ---- */
+.plan-wrapper {
+  padding-top: 150px; /* header 下面留空間 */
+}
+
+/* ---------- Booking Widget Container ---------- */
+.booking-widget {
+  max-width: 900px;
+  margin: -120px auto 80px; /* 與 header 保持間距 */
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.booking-widget h2 {
+  font-size: 32px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.booking-widget h2 span {
+  color: #e60012; /* 日系紅 */
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background: #e60012;
+  color: white;
+  border-color: #e60012;
+}
+
+/* ---------- Form Layout (新版) ---------- */
+.booking-form {
+  display: flex;
+  flex-wrap: wrap; /* 允許換行 */
+  gap: 16px;       /* 欄位間距 */
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 200px; /* 最小 200px，自動分配剩餘空間 */
+  min-width: 200px; /* 避免欄位太窄 */
+}
+
+.field label {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.field select,
+.field input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---------- Search Button ---------- */
+.search-btn {
+  flex: 1 1 100%;   /* 佔滿整行 */
+  margin-top: 16px;
+  padding: 16px;
+  font-size: 18px;
+  border-radius: 40px;
+  border: none;
+  background: #e60012;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+  background: #c80010;
+}
