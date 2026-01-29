@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="./css/sign-in.css">
+</head>
+
+<body>
+
+    <!-- ---------- Header / Navbar ---------- -->
+    <header class="top">
+        <div class="top-nav">
+            <div class="nav-inner">
+                <h1 class="logo">Japan Travel Guide</h1>
+                <nav>
+                    <a href="JP-Travel.html">Home</a>
+                    <a href="destination.html">Destinations</a>
+                    <a href="Things to do.html">Things to do</a>
+                    <a href="plan.html">Plan</a>
+                </nav>
+                <div class="search-wrap">
+                    <div class="search-btn">
+                        <span class="search-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="7" />
+                                <line x1="16" y1="16" x2="22" y2="22" />
+                            </svg>
+                        </span>
+                        <span class="search-text">Search</span>
+                    </div>
+                </div>
+                <a href="sign-in.html" class="signin">Sign in</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ---------- Sign In Form ---------- -->
+    <main class="signin-page">
+        <form action="/login-submit" method="post">
+            <h2>登入</h2>
+
+            <!-- Username -->
+            <div class="field input-wrap">
+                <span class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 8-4 8-4s8 0 8 4" />
+                    </svg>
+                </span>
+                <input type="text" id="username" name="username" placeholder="使用者名稱" required autocomplete="username">
+            </div>
+
+            <!-- Password -->
+            <div class="field input-wrap">
+                <span class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24">
+                        <rect x="6" y="10" width="12" height="10" rx="2" />
+                        <path d="M9 10V7a3 3 0 0 1 6 0v3" />
+                    </svg>
+                </span>
+                <input type="password" id="password" name="password" placeholder="密碼" required
+                    autocomplete="current-password">
+            </div>
+
+            <button type="submit" class="signin-btn">登入</button>
+        </form>
+    </main>
+    <!--------- js ---------->
+    <script>
+
+        const topNav = document.querySelector('.top-nav');
+
+        // 滾動變色
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                topNav.classList.add('scrolled');
+            } else {
+                topNav.classList.remove('scrolled');
+            }
+        });
+
+        const searchWrap = document.querySelector('.search-wrap');
+        const searchBtn = document.querySelector('.search-btn');
+        const searchInput = document.querySelector('.search-input');
+
+        // 點擊搜尋按鈕，切換展開
+        searchBtn.addEventListener('click', () => {
+            searchWrap.classList.toggle('active');
+
+            // 如果展開，focus 輸入框
+            if (searchWrap.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+
+        // 按下 Enter 可以提交搜尋（可選）
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                alert(`搜尋: ${searchInput.value}`);
+                // 這裡可以改成真正搜尋功能
+            }
+        });
+        document.addEventListener('click', (e) => {
+            // 如果點擊不是 searchWrap 內部，收回
+            if (!searchWrap.contains(e.target)) {
+                searchWrap.classList.remove('active');
+            }
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>

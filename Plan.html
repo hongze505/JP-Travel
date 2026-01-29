@@ -13,18 +13,36 @@
         <div class="top-nav">
             <div class="nav-inner">
                 <h1 class="logo">Japan Travel Guide</h1>
+
                 <nav>
                     <a href="JP-Travel.html">Home</a>
                     <a href="destination.html">Destinations</a>
                     <a href="Things to do.html">Things to do</a>
                     <a href="plan.html">Plan</a>
                 </nav>
+
+                <div class="search-wrap">
+                    <button class="search-btn">
+                        <span class="search-icon">
+                            <svg width="20" height="28" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="7" />
+                                <line x1="16" y1="16" x2="22" y2="22" />
+                            </svg>
+                        </span>
+                        <span class="search-text">Search</span>
+                    </button>
+
+                    <input type="text" class="search-input" placeholder="Search Japan..." />
+                </div>
+
                 <a href="sign-in.html" class="signin">Sign in</a>
             </div>
         </div>
-        <div class="title">
-            Plan your trip
-        </div>
+
+        <div class="title">G<span>o</span> traveling</div>
+    </header>
+
+
     </header>
 
     <!-- Main Booking Widget -->
@@ -176,8 +194,34 @@
             }
         });
 
+        const searchWrap = document.querySelector('.search-wrap');
+        const searchBtn = document.querySelector('.search-btn');
+        const searchInput = document.querySelector('.search-input');
 
-        <!-- JS -->
+        // 點擊搜尋按鈕，切換展開
+        searchBtn.addEventListener('click', () => {
+            searchWrap.classList.toggle('active');
+
+            // 如果展開，focus 輸入框
+            if (searchWrap.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+
+        // 按下 Enter 可以提交搜尋（可選）
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                alert(`搜尋: ${searchInput.value}`);
+                // 這裡可以改成真正搜尋功能
+            }
+        });
+        document.addEventListener('click', (e) => {
+            // 如果點擊不是 searchWrap 內部，收回
+            if (!searchWrap.contains(e.target)) {
+                searchWrap.classList.remove('active');
+            }
+        });
+
 
         // Tab 切換
         const tabs = document.querySelectorAll('.tab');
@@ -188,7 +232,7 @@
                 tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 const target = tab.dataset.tab;
-                contents.forEach(c => c.style.display = (c.id === target ? 'grid' : 'none'));
+                contents.forEach(c => c.style.display = (c.id === target ? 'flex' : 'none'));
             });
         });
 
@@ -204,7 +248,8 @@
             checkoutDate.setDate(checkoutDate.getDate() + nights);
             const checkout = checkoutDate.toISOString().split("T")[0];
 
-            const url = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(city)}&checkin=${checkin}&checkout=${checkout}`;
+            const url =
+                `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(city)}&checkin=${checkin}&checkout=${checkout}`;
             window.open(url, "_blank");
         });
 
@@ -216,7 +261,8 @@
             const ret = document.getElementById("flight-return").value;
             if (!from || !to || !depart) { alert("Please fill From, To and Departure"); return; }
 
-            const skyscannerURL = `https://www.skyscanner.com/transport/flights/${from}/${to}/${depart.replace(/-/g, "")}/${ret ? ret.replace(/-/g, "") : ""}/`;
+            const skyscannerURL = `https://www.skyscanner.com/transport/flights/${from}/${to}/${depart.replace(/-/g, "")}/${ret
+                ? ret.replace(/-/g, "") : ""}/`;
             window.open(skyscannerURL, "_blank");
         });
 

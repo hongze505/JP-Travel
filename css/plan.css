@@ -24,6 +24,7 @@ body {
   position: relative;
 }
 
+
 /* title */
 .title{
  position: absolute;
@@ -36,8 +37,16 @@ body {
  font-weight: bold;
  text-align: center;
  letter-spacing: 2px;
+ text-decoration-line: underline;
+ text-decoration-style: solid;
+ text-decoration-thickness: 2px;
+ text-shadow: 0 4px 10px rgba(0,0,0,.3);
+ text-underline-offset: 8px;
+;
 }
-
+.title span{
+ color: #e60012;
+}
 /* ---------- Top Nav (fixed 背景) ---------- */
 /* 初始 nav 透明 */
 .top-nav {
@@ -72,6 +81,7 @@ body {
 .logo {
   margin: 0;
   font-size: 24px;
+  text-shadow: 0 4px 10px rgba(0,0,0,.2);
   transition: font-size 0.3s ease;
 }
 
@@ -92,7 +102,7 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 3px;
   background-position: left bottom;
@@ -111,7 +121,7 @@ nav a:hover {
   color: white;
   text-decoration: none;
   font-weight: bold;
-
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
   padding: 6px 14px;
   border: 1px solid white;
   border-radius: 20px;
@@ -126,22 +136,20 @@ nav a:hover {
 
 /* ---------- Search Button ---------- */
 
-.search-wrap {
-  position: relative;
+/* Nav 上的搜尋按鈕（和首頁一樣） */
+.top-nav .search-wrap {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* 搜尋按鈕 - 跟 signin 一樣 */
-.search-btn {
+.top-nav .search-wrap .search-btn {
   display: flex;
   align-items: center;
   gap: 8px;
 
   color: white;
   background-color: transparent;
-
   padding: 6px 14px;
   border: 1px solid white;
   border-radius: 25px;
@@ -151,36 +159,34 @@ nav a:hover {
   font-size: 16px;
 
   cursor: pointer;
-
   transition: background-color 0.3s ease, color 0.3s ease;
-  user-select: none;
 }
 
-.search-btn:hover {
+.top-nav .search-wrap .search-btn:hover {
   background-color: white;
-  color: var(--text-gray); /* 你的 text-gray: #666 */
+  color: var(--text-gray);
 }
 
-.search-icon {
-display: flex;
-align-items: center;
-
+.top-nav .search-wrap .search-icon {
+  display: flex;
+  align-items: center;
 }
 
-.search-icon svg {
+.top-nav .search-wrap .search-icon svg {
   stroke: white;
   fill: none;
   stroke-width: 2.4;
   transition: stroke 0.3s ease;
 }
 
-.search-btn:hover .search-icon svg {
-  stroke: var(--text-gray); /* #666 */
+.top-nav .search-wrap .search-btn:hover .search-icon svg {
+  stroke: var(--text-gray);
 }
 
-.search-text {
+.top-nav .search-wrap .search-text {
   user-select: none;
 }
+
 
 /* 輸入框初始隱藏 */
 .search-input {
@@ -225,6 +231,8 @@ align-items: center;
   border-radius: 50%;
 }
 
+
+
 /*----- main  ---- */
 .plan-wrapper {
   padding-top: 150px; /* header 下面留空間 */
@@ -241,7 +249,7 @@ align-items: center;
 }
 
 .booking-widget h2 {
-  font-size: 32px;
+  font-size: 40px;
   margin-bottom: 24px;
   font-weight: 600;
 }
@@ -305,7 +313,7 @@ align-items: center;
 }
 
 /* ---------- Search Button ---------- */
-.search-btn {
+.booking-widget .search-btn {
   flex: 1 1 100%;   /* 佔滿整行 */
   margin-top: 16px;
   padding: 16px;
@@ -319,6 +327,45 @@ align-items: center;
   transition: background 0.3s ease;
 }
 
-.search-btn:hover {
+.booking-widget .search-btn:hover {
   background: #c80010;
+}
+
+/* ===== 表單橫向排列 ===== */
+.form-content {
+  display: flex;
+  align-items: flex-end; /* label 對齊 */
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* 欄位不要太窄 */
+.form-content .field {
+  flex: 1 1 180px;
+}
+
+/* 搜尋按鈕改成右側固定寬 */
+.form-content .search-btn {
+  flex: 0 0 220px;
+  margin-top: 22px; /* 對齊輸入框底部 */
+  height: 56px;
+  border-radius: 16px;
+}
+/* 搜尋按鈕置中 */
+.form-content .search-btn {
+  flex: 0 0 100%;      /* 佔滿一整行 */
+  max-width: 320px;   /* 控制寬度 */
+  margin: 24px auto 0;/* 水平置中 */
+}
+/* ===== 大型 Search Button ===== */
+.form-content .search-btn {
+  max-width: 420px;      /* 更寬 */
+  padding: 20px 0;      /*更高*/
+  font-size: 20px;      /*字體放大*/
+  border-radius: 50px;  /*超圓角，日系*/
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;      /* 垂直置中 */
+  justify-content: center;  /* 水平置中 */
+  line-height: 1;           /* 防止文字偏移 */
 }

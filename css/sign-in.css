@@ -1,0 +1,194 @@
+:root {
+  --main-black: #111;
+  --text-gray: #666;
+  --soft-gray: #f5f5f5;
+  --japan-red: #e60012;
+}
+
+/* ---------- Body ---------- */
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  line-height: 1.8;
+  color: var(--main-black);
+  background-color: var(--soft-gray);
+}
+
+/* ---------- Navbar / Header ---------- */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 16px 30px;
+}
+
+.logo {
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+  flex: 1;
+  justify-content: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signin {
+  margin-left: auto;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 20px;
+  transition: 0.3s ease;
+}
+
+.signin:hover {
+  background-color: white;
+  color: var(--text-gray);
+}
+
+/* ---------- Search ---------- */
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background-color: transparent;
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: white;
+  color: var(--text-gray);
+}
+
+.search-icon svg {
+  stroke: white;
+  fill: none;
+  stroke-width: 2.4;
+  transition: 0.3s ease;
+}
+
+.search-btn:hover .search-icon svg {
+  stroke: var(--text-gray);
+}
+
+/* ---------- Sign In Form ---------- */
+.signin-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.signin-page form {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signin-page h2 {
+  text-align: center;
+  font-size: 32px;
+  color: var(--main-black);
+  margin-bottom: 20px;
+}
+
+/* ---------- Input with Icon ---------- */
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap .input-icon {
+  position: absolute;
+  left: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap .input-icon svg {
+  stroke: var(--text-gray);
+  fill: none;
+  stroke-width: 2;
+}
+
+.input-wrap input {
+  width: 100%;
+  padding: 10px 12px 10px 40px; /* 左側給 icon 空間 */
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.input-wrap input:focus {
+  border-color: var(--japan-red);
+}
+
+.input-wrap input:focus + .input-icon,
+.input-wrap input:focus ~ .input-icon {
+  stroke: var(--japan-red);
+}
+
+/* ---------- Submit Button ---------- */
+.signin-btn {
+  background-color: var(--japan-red);
+  color: white;
+  border: none;
+  font-weight: bold;
+  padding: 14px;
+  font-size: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.signin-btn:hover {
+  background-color: #c9171e;
+}
+
+
