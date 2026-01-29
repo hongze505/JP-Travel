@@ -75,7 +75,7 @@ body {
 
 /* 核心紅點 */
 .title-text span {
-  color: var(--japan-red);
+  color:  #e60012;
   font-style: italic; /* 讓紅點 O 稍微有點傾斜動感 */
 }
 
