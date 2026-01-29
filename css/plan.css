@@ -24,28 +24,46 @@ body {
   position: relative;
 }
 
+.title-main {
+  position: relative;
+  display: flex;          /* 改用 flex */
+  align-items: flex-start; /* 頂部對齊 */
+  gap: 40px;              /* 直接設定間距，這裡可以調整你想要的距離 */
+}
 
-/* title */
-.title{
+.title-container{
  position: absolute;
  top: 50%;
  left: 50%;
  transform: translate(-50%, -50%);/*完全置中*/
-
+}
+.title-text{
  color: #fff;
  font-size: 80px;
  font-weight: bold;
  text-align: center;
  letter-spacing: 2px;
- text-decoration-line: underline;
- text-decoration-style: solid;
- text-decoration-thickness: 2px;
- text-shadow: 0 4px 10px rgba(0,0,0,.3);
- text-underline-offset: 8px;
-;
 }
-.title span{
+.title-text span{
  color: #e60012;
+}
+
+.title-text::after{
+  content:"";
+  position: absolute;
+  left:0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: textline 1.2s 0.5s  cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes textline{
+  to{
+    transform: scaleX(1);
+  }
 }
 /* ---------- Top Nav (fixed 背景) ---------- */
 /* 初始 nav 透明 */

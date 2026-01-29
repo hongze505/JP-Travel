@@ -24,6 +24,112 @@ body {
   position: relative;
 }
 
+/* title */
+/* .title{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);/*完全置中*/
+/* 
+  color: #fff;
+ font-size: 80px;
+ font-weight: bold;
+ text-align: center;
+ letter-spacing: 2px;
+ text-decoration-line: underline;
+ text-decoration-style: solid;
+ text-decoration-thickness: 2px;
+ text-shadow: 0 4px 10px rgba(0,0,0,.3);
+ text-underline-offset: 8px; 
+
+} */
+
+
+/* ---------- 改造後的標題區域 ---------- */
+
+/* 5. 偏心佈局：不再完全死板置中 */
+.title-container {
+  position: absolute;
+  bottom: 15%;      /* 靠下方 */
+  left: 10%;        /* 靠左方，產生大量留白美感*/
+  z-index: 10;
+}
+ 
+
+.title-main {
+  position: relative;
+  display: flex;          /* 改用 flex */
+  align-items: flex-start; /* 頂部對齊 */
+  gap: 40px;              /* 直接設定間距，這裡可以調整你想要的距離 */
+}
+
+.title-text {
+ color: #fff;
+  font-size: 90px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  position: relative;
+  line-height: 1; /* 縮小行高，避免底線離文字太遠 */
+}
+
+/* 核心紅點 */
+.title-text span {
+  color: var(--japan-red);
+  font-style: italic; /* 讓紅點 O 稍微有點傾斜動感 */
+}
+
+/* 4. 動態線條動畫：取代原本的 text-decoration */
+
+.title-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;    /* 調整線條與文字的距離 */
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  transform: scaleX(0);      /* 初始長度為 0 */
+  transform-origin: left;    /* 從左邊開始生長 */
+  
+  /* 設定動畫：名字 | 時長 | 延遲 | 曲線 | 停留在結束狀態 */
+  animation: lineGrow 1.2s 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes lineGrow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* 3. 日式縱向副標題 */
+.title-jp {
+  writing-mode: vertical-rl;
+  font-family: "Noto Serif JP", serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  color:#fff;
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
+  
+  
+  /* 初始狀態隱藏 */
+  opacity: 0;
+  transform: translateY(20px);
+  
+  /* 動態效果：晚於底線出現 */
+  animation: jpFadeIn 1s 1.2s ease forwards;
+}
+
+/* 進場小動畫：讓日文輕輕滑入 */
+@keyframes jpFadeIn {
+  to {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+}
+
+
+
 /* ---------- Top Nav (fixed 背景) ---------- */
 /* 初始 nav 透明 */
 .top-nav {

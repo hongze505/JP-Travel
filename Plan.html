@@ -38,8 +38,13 @@
                 <a href="sign-in.html" class="signin">Sign in</a>
             </div>
         </div>
-
-        <div class="title">G<span>o</span> traveling</div>
+        <div class="title-container">
+            <div class="title-main">
+                <div class="title-text">
+                    G<span>o</span> traveling
+                </div>
+            </div>
+        </div>
     </header>
 
 
@@ -99,16 +104,23 @@
                 <div class="form-content" id="flights" style="display:none;">
                     <div class="field">
                         <label>From</label>
-                        <input type="text" id="flight-from" placeholder="Tokyo">
+                        <input type="text" value="Taiwan (TPE)" disabled>
                     </div>
+
                     <div class="field">
                         <label>To</label>
-                        <input type="text" id="flight-to" placeholder="Nagoya">
+                        <select id="flight-to">
+                            <option value="tyoa">Tokyo</option>
+                            <option value="ngoa">Nagoya</option>
+                            <option value="kixa">Kyoto (Kansai)</option>
+                        </select>
                     </div>
+
                     <div class="field">
                         <label>Departure</label>
                         <input type="date" id="flight-depart">
                     </div>
+
                     <div class="field">
                         <label>Return</label>
                         <input type="date" id="flight-return">
@@ -116,14 +128,17 @@
                     <div class="field">
                         <label>People</label>
                         <select id="flight-people">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                         </select>
                     </div>
+
                     <button class="search-btn" id="flight-search">Search Flights →</button>
                 </div>
+
+
 
                 <!-- Activities -->
                 <div class="form-content" id="activities" style="display:none;">
@@ -255,16 +270,37 @@
 
         // Flights Skyscanner 搜尋
         document.getElementById("flight-search").addEventListener("click", () => {
-            const from = document.getElementById("flight-from").value;
-            const to = document.getElementById("flight-to").value;
+            const from = "tpe"; // Taipei
+            const to = document.getElementById("flight-to").value; // nrt / hnd / ngo / kix
             const depart = document.getElementById("flight-depart").value;
             const ret = document.getElementById("flight-return").value;
-            if (!from || !to || !depart) { alert("Please fill From, To and Departure"); return; }
+            const people = document.getElementById("flight-people").value;
 
-            const skyscannerURL = `https://www.skyscanner.com/transport/flights/${from}/${to}/${depart.replace(/-/g, "")}/${ret
-                ? ret.replace(/-/g, "") : ""}/`;
-            window.open(skyscannerURL, "_blank");
+            if (!depart) {
+                alert("Please select departure date");
+                return;
+            }
+
+            const departDate = depart.replace(/-/g, "");
+            const returnDate = ret ? ret.replace(/-/g, "") : "";
+
+            let url = `https://www.skyscanner.com/transport/flights/${from}/${to}/${departDate}/`;
+
+            if (returnDate) {
+                url += `${returnDate}/`;
+            }
+
+            url += `?adultsv2=${people}`;
+
+            window.open(url, "_blank");
+
+
+
         });
+
+
+
+
 
         // Activities Klook
         document.getElementById("act-search").addEventListener("click", () => {
