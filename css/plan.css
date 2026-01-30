@@ -16,7 +16,7 @@ body {
 
 /* ---------- Header ---------- */ 
  header.top {
-  background-image: url(../images/pexels-apasaric-1344537.jpg);
+  background: url('../images/pexels-apasaric-1344537.jpg');
   background-size: cover;
   background-position: 10% 55%;
   height: 600px;

@@ -1,3 +1,4 @@
+
 :root {
   --main-black: #111;
   --text-gray: #666;
@@ -5,64 +6,91 @@
   --japan-red: #e60012;
 }
 
-/* ---------- Body ---------- */
+
 body {
   margin: 0;
+  height: 100vh;
+  /* 關鍵修正：將 background-image 改為 background */
+  background: url('../images/pexels-dsd-143941-3917809.jpg') no-repeat center center fixed;
+  background-size: cover;
   font-family: "Noto Sans JP", Arial, sans-serif;
   line-height: 1.8;
-  color: var(--main-black);
-  background-color: var(--soft-gray);
+  overflow: hidden;
+  color: var(--text-gray);
 }
 
-/* ---------- Navbar / Header ---------- */
+
+/* ---------- Top Nav (fixed 背景) ---------- */
+/* 初始 nav 透明 */
 .top-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
+  background-color: transparent;   /* 初始透明 */
+  
+  box-sizing: border-box;
 }
 
+
+/* ---------- Nav 內容置中 ---------- */
 .nav-inner {
   max-width: 1200px;
-  width: 100%;
+  margin: 0 auto;
+  padding: 16px 30px;
+
   display: flex;
   align-items: center;
-  padding: 16px 30px;
 }
 
+/* ---------- Logo ---------- */
 .logo {
-  font-size: 24px;
-  color: white;
-  font-weight: bold;
   margin: 0;
+  font-size: 24px;
+  color: var(--soft-gray);
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
 }
 
+
+/* ---------- Nav Links ---------- */
 nav {
   display: flex;
   gap: 30px;
-  flex: 1;
-  justify-content: center;
+
+  flex: 1;                 /* 吃中間空間 */
+  justify-content: center; /* 置中 */
 }
 
 nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 3px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
 }
+
+nav a:hover {
+  background-size: 100% 3px;
+}
+
+/* ---------- Sign in ---------- */
 
 .signin {
   margin-left: auto;
   color: white;
   text-decoration: none;
   font-weight: bold;
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
   padding: 6px 14px;
   border: 1px solid white;
   border-radius: 20px;
-  transition: 0.3s ease;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .signin:hover {
@@ -70,62 +98,156 @@ nav a {
   color: var(--text-gray);
 }
 
-/* ---------- Search ---------- */
+/* ---------- Search Button ---------- */
+
 .search-wrap {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
+/* 搜尋按鈕 - 跟 signin 一樣 */
 .search-btn {
   display: flex;
   align-items: center;
   gap: 8px;
+
   color: white;
   background-color: transparent;
+
   padding: 6px 14px;
   border: 1px solid white;
   border-radius: 25px;
+
+  font-family: "Noto Sans JP", Arial, sans-serif;
   font-weight: bold;
+  font-size: 16px;
+
   cursor: pointer;
-  transition: 0.3s ease;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
 }
 
 .search-btn:hover {
   background-color: white;
-  color: var(--text-gray);
+  color: var(--text-gray); /* 你的 text-gray: #666 */
+}
+
+.search-icon {
+display: flex;
+align-items: center;
+
 }
 
 .search-icon svg {
   stroke: white;
   fill: none;
   stroke-width: 2.4;
-  transition: 0.3s ease;
+  transition: stroke 0.3s ease;
 }
 
 .search-btn:hover .search-icon svg {
-  stroke: var(--text-gray);
+  stroke: var(--text-gray); /* #666 */
+}
+
+.search-text {
+  user-select: none;
+}
+
+/* 輸入框初始隱藏 */
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 20px;
+  font-size: 16px;
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  font-weight: bold;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+/* focus 狀態邊框顏色變色 */
+.search-input:focus {
+  border-color: var(--soft-gray);
+}
+
+/* 展開時 */
+.search-wrap.active .search-input {
+  width: 180px;
+  opacity: 1;
+  padding: 6px 14px;
+  background-color: white;
+  color: var(--main-black);
+}
+
+/* 展開時隱藏文字，只留 icon */
+.search-wrap.active .search-text {
+  display: none;
+}
+
+/* 展開時搜尋按鈕縮小成圓形，只留 icon */
+.search-wrap.active .search-btn {
+  padding: 6px;
+  width: 40px;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 /* ---------- Sign In Form ---------- */
 .signin-page {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* 將登入框推向右側 */
   align-items: center;
   min-height: 100vh;
-  padding-top: 100px;
+  padding-right: 8%; /* 距離右邊界留一點呼吸空間 */
+  
+  /* 確保背景圖在這裡也能正確顯示（如果 body 沒設的話） */
+  background: url('../images/pexels-dsd-143941-3917809.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.login-span{
+  color: var(--japan-red);
+  font-style: italic;
 }
 
 .signin-page form {
-  background: white;
+/* 修改背景，降低不透明度並加入模糊 */
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(15px); /* 關鍵：讓背景模糊 */
+  -webkit-backdrop-filter: blur(15px);
+  
+  /* 邊框加一個細細的白邊，增加高級感 */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  border-radius: 24px; /* 圓角稍微加大一點點更精緻 */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px; /* 間距加大一點，更有呼吸感 */
+
+  /* --- 插入滑入動畫 --- */
+  animation: slideInFromRight 1s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(120px); /* 從右邊更遠一點的地方滑入 */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .signin-page h2 {
@@ -133,6 +255,73 @@ nav a {
   font-size: 32px;
   color: var(--main-black);
   margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.signin-page h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background-color: var(--japan-red);
+}
+/* ---------- 直排日文容器 ---------- */
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 8%;  /* 稍微往左靠一點 */
+    top: 50%;
+    transform: translateY(-50%); /* 確保垂直置中 */
+
+     opacity: 0;
+     transform: translateY(20px);
+
+    /* 這裡綁定浮現動畫 */
+    animation: fadeUpIn 0.7s 0.5s ease forwards;
+}
+
+.jp-sentence {
+    color: white;
+    font-size: 28px;        /* 從 42px 縮小到 28px */
+    font-weight: 500;        /* 稍微調薄一點點 */
+    letter-spacing: 0.4em;   /* 縮小字距，更顯精緻 */
+    margin-bottom: 15px;
+}
+
+.jp-sub {
+    font-size: 14px;        /* 副標題也同步縮小 */
+    letter-spacing: 0.2em;
+    opacity: 0.7;           /* 增加透明度，讓層次更豐富 */
+}
+
+/* 重新微調動畫，讓它動得更細微 */
+@keyframes fadeUpIn {
+    0% {
+        transform: translateY(-40%); /* 從原本位置下方一點點開始 */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-50%); /* 回到垂直置中位置 */
+        opacity: 1;
+    }
+}
+
+/* 修正 signin-page 以確保定位正確 */
+.signin-page {
+    position: relative; /* 讓 .vertical-text 的 absolute 參考這個容器 */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 100vh;
+    padding-right: 8%;
 }
 
 /* ---------- Input with Icon ---------- */
@@ -159,14 +348,17 @@ nav a {
   width: 100%;
   padding: 10px 12px 10px 40px; /* 左側給 icon 空間 */
   border-radius: 12px;
-  border: 1px solid #ddd;
   font-size: 16px;
   outline: none;
-  transition: border 0.3s ease;
+  background: rgba(255, 255, 255, 0.5); /* 讓輸入框也有一點透明度 */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; 
 }
 
 .input-wrap input:focus {
+  background: white;
   border-color: var(--japan-red);
+  box-shadow: 0 0 0 4px rgba(230, 0, 18, 0.1); /* 淡淡的紅暈 */
 }
 
 .input-wrap input:focus + .input-icon,
@@ -185,10 +377,38 @@ nav a {
   border-radius: 50px;
   cursor: pointer;
   transition: 0.3s ease;
+  letter-spacing: 2px; /* 字距拉開，更有質感 */
+  box-shadow: 0 4px 15px rgba(230, 0, 18, 0.3);
 }
 
 .signin-btn:hover {
   background-color: #c9171e;
+  transform: translateY(-2px); /* 輕微往上飄 */
+  box-shadow: 0 6px 20px rgba(230, 0, 18, 0.4);
 }
 
+.signin-links {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.signin-links a {
+    color: #555;
+    text-decoration: none;
+}
+
+.signin-links a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.signin-links .divider {
+    margin: 0 8px;
+    color: #ccc;
+}
+
+.signin-btn:active {
+  transform: translateY(0); /* 點擊時按下去 */
+}
 
