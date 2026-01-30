@@ -26,7 +26,7 @@ body {
 
 
 
-/* ---------- 改造後的標題區域 ---------- */
+/* ---------- title ---------- */
 
 
 .title-container {
@@ -301,22 +301,65 @@ align-items: center;
 
 
 /* ---------- Main ---------- */
-main {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
+.about-section {
+  padding: 100px 20px; /* 增加上下間距，讓留白更高級 */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* 核心：讓內部所有元素水平居中 */
+  text-align: center;     /* 讓文字內容本身也置中 */
 }
 
-main h2 {
-  font-size: 32px;
+.about-content {
+  max-width: 800px;       /* 限制寬度，閱讀起來才舒服 */
+}
+
+.about-content .sub-title {
+  display: block;         /* 讓它自成一行 */
+  color: var(--japan-red);
+  font-size: 14px;
+  letter-spacing: 5px;    /* 拉開字距，更有設計感 */
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
-main p {
-  font-size: 18px;
-  color: var(--text-gray);
+.about-content h2 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 42px;        /* 標題放大一點 */
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;  /* 為了讓底下的裝飾線長度跟隨文字 */
 }
 
+.about-content p {
+  font-size: 18px;
+  line-height: 2.2;       /* 行高拉開，日系排版的精髓就是留白 */
+  color: var(--text-gray);
+  word-break: keep-all;   /* 避免中文字在不該斷的地方斷掉 */
+}
+
+.destinations {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.destinations h2 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.destinations h2::before {
+  content: "人気のエリア"; /* 加入日文副標題 */
+  display: block;
+  font-size: 14px;
+  color: var(--japan-red);
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
 /* ---------- Cards ---------- */
 .cards{
   display: flex;
@@ -326,27 +369,48 @@ main p {
 }
 
 .card {
+  position: relative;
   width: 350px;
   height: 300px;
-  
+  overflow: hidden;
+
   display: flex;
-  align-items: center;   
-  justify-content: center;
-
-  color: var(--soft-gray);
-  font-size: 28px;
+  align-items: flex-end;   
+  justify-content: flex-start;
+  padding: 30px;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.8);
   font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0,0,0,.3);
+  border-radius: 16px;
   text-decoration: none;
-
-  
-  border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  filter: grayscale(20%); /* 初始稍微低飽和 */
+  transition: all 0.5s ease;
 }
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-25deg);
+  transition: 0.8s;
+}
+
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  /* transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2); */
+  filter: grayscale(0%); /* 移入時恢復鮮豔 */
+  transform: scale(1.02); /* 極輕微的放大 */
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: 4px;
 }
+
 
 .kyoto {
   background-size: cover;
@@ -354,9 +418,9 @@ main p {
   background-image: url("../images/kyoto.jpg");
 }
 
-.fuji{
+.tokyo{
   background-size: cover;
-  background-position: center 50%;
+  background-position: center 45%;
   background-image: url("../images/tokyo.jpg");
 }
 .nagoya {
@@ -365,6 +429,51 @@ main p {
   background-image: url("../images/nagoya.jpg");
 }
 
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 80px 40px;
+  background-color: #fafafa; /* 極淺灰，做出區塊感 */
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}
+
+.feature-item {
+  text-align: left; /* 改為靠左對齊更有設計感 */
+  padding: 0 20px;
+}
+
+.f-num {
+  font-family: 'Times New Roman', serif;
+  font-size: 32px;
+  color: var(--japan-red);
+  font-style: italic;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.feature-item h3 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-left: 2px solid var(--japan-red); /* 左側點綴紅線 */
+  padding-left: 12px;
+}
+
+.en-sub {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.feature-item p {
+  font-size: 14px;
+  color: var(--text-gray);
+  line-height: 1.8;
+}
 /* ---------- Footer ---------- */
 footer {
   padding: 40px;
@@ -372,4 +481,6 @@ footer {
   font-size: 12px;
   color: var(--text-gray);
   border-top: 1px solid #eee;
+  margin-top: 100px;
 }
+
