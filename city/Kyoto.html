@@ -1,53 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
-    <title>Kyoto | Japan Travel</title>
-    <link rel="stylesheet" href="../css/JP.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都 | 千年古都的靜謐時光</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/kyoto.css">
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="city-hero kyoto">
-        <div class="hero-text">
-            <h1>Kyoto</h1>
-            <p>The heart of traditional Japan</p>
-        </div>
+    <header class="kyoto-hero">
+        <div class="hero-label">KYOTO / 京都市</div>
+        <h1>千年古都的靜謐時光</h1>
     </header>
 
-    <!-- Main -->
-    <main>
-        <section class="intro">
-            <h2>About Kyoto</h2>
-            <p>
-                Kyoto is famous for its temples, shrines, traditional streets,
-                and seasonal beauty. It was Japan’s capital for over 1,000 years.
-            </p>
-        </section>
+    <main class="container">
 
-        <section class="highlights">
-            <h2>Top Attractions</h2>
-
-            <div class="cards">
-                <div class="card bg-kiyomizu">
-                    <span>Kiyomizu-dera</span>
-                </div>
-
-                <div class="card bg-gion">
-                    <span>Gion District</span>
-                </div>
-
-                <div class="card bg-arashiyama">
-                    <span>Arashiyama</span>
-                </div>
+        <section class="detail-block">
+            <div class="text-side">
+                <span class="category">SPOTS</span>
+                <h2>清水寺</h2>
+                <p>站在懸空的清水舞台，俯瞰四季變化的京都市景，是每個旅人對京都的第一印象。這座完全不用鋼釘、僅由 139 根高大圓木支撐的建築，展現了日本古代木造建築的巔峰造詣。</p>
+            </div>
+            <div class="image-side">
+                <img src="../images/清水寺.jpg" alt="清水寺">
             </div>
         </section>
+
+        <section class="detail-block reverse">
+            <div class="text-side">
+                <span class="category">FOOD</span>
+                <h2>京懷石料理</h2>
+                <p>這不只是食物，更是職人對旬味（時令）的極致追求，每一道菜都是一件藝術品。懷石料理講究視覺與味覺的平衡，讓旅人在靜謐的茶道精神中，品嚐大自然的饋贈。</p>
+            </div>
+            <div class="image-side">
+                <img src="../images/懷石料理.jpg" alt="懷石料理">
+            </div>
+        </section>
+
+        <section class="detail-block">
+            <div class="text-side">
+                <span class="category">EXPERIENCE</span>
+                <h2>宇治抹茶</h2>
+                <p>作為日本茶文化的發源地，宇治抹茶以其翠綠的色澤與回甘的韻味聞名。走訪百年茶屋，親手刷一份抹茶，配上軟糯的蕨餅，這不僅是味蕾的享受，更是一場洗滌心靈的茶道儀式。</p>
+            </div>
+            <div class="image-side">
+                <img src="../images/matcha.jpg" alt="宇治抹茶">
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <p>© 2026 Japan Travel (Student Project)</p>
+    <footer style="text-align: center; padding: 60px; color: #ccc; font-size: 12px;">
+        &copy; 2026 Explore Japan. All rights reserved.
     </footer>
 
 </body>
