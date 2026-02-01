@@ -9,20 +9,83 @@
     <link rel="stylesheet" href="../css/kyoto.css">
 </head>
 
-<body>
 
-    <header class="kyoto-hero">
-        <div class="hero-label">KYOTO / 京都市</div>
-        <h1>千年古都的靜謐時光</h1>
+<body>
+    <header class="top kyoto-theme">
+        <div class="top-nav">
+            <div class="nav-inner">
+                <h1 class="logo">Japan Travel Guide</h1>
+                <nav>
+                    <a href="../JP-Travel.html">Home</a>
+                    <a href="../destination.html">Destinations</a>
+                    <a href="../Things to do.html">Things to do</a>
+                    <a href="../plan.html">Plan</a>
+                </nav>
+
+                <div class="search-wrap">
+                    <div class="search-btn">
+                        <span class="search-icon">
+                            <svg width="20" height="28" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="7" />
+                                <line x1="16" y1="16" x2="22" y2="22" />
+                            </svg>
+                        </span>
+                        <span class="search-text">Search</span>
+                    </div>
+                    <input type="text" class="search-input" placeholder="Search..." />
+                </div>
+                <a href="./sign-in/sign-in.html" class="signin">Sign in</a>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-label">KYOTO / 京都市</div>
+            <h1>千年古都的靜謐時光</h1>
+        </div>
     </header>
 
     <main class="container">
-
         <section class="detail-block">
             <div class="text-side">
-                <span class="category">SPOTS</span>
-                <h2>清水寺</h2>
-                <p>站在懸空的清水舞台，俯瞰四季變化的京都市景，是每個旅人對京都的第一印象。這座完全不用鋼釘、僅由 139 根高大圓木支撐的建築，展現了日本古代木造建築的巔峰造詣。</p>
+                <span class="category">WORLD HERITAGE</span>
+                <h2>清水寺 Kiyomizu-dera</h2>
+                <p>
+                    清水寺始建於西元 778 年，擁有超過 1200 年的悠久歷史。作為供奉觀音菩薩的靈場，這裡長久以來一直對所有階層的市民開放，體現了廣大的慈悲之心。
+                </p>
+
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div>
+                            <span class="feature-title">音羽之瀧 (Otowa Waterfall)</span>
+                            <span class="feature-desc">清泉分為三道，分別代表「學業成就」、「戀愛成就」與「長壽延命」。遊客可擇一飲用，據說太貪心喝下全部反而會失靈。</span>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div>
+                            <span class="feature-title">清水舞台 (Kiyomizu Platform)</span>
+                            <span class="feature-desc">由 168 根巨大的圓柱支撐，全程不使用一根釘子，僅以卡榫工法組裝而成，能俯瞰京都四季的絕美景致。</span>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div>
+                            <span class="feature-title">地主神社 (Jishu Shrine)</span>
+                            <span class="feature-desc">著名的京都求緣勝地。若能閉眼走過兩塊「戀愛占卜石」之間，傳說良緣便會順利降臨。</span>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div>
+                            <span class="feature-title">清水坂 (Kiyomizu Zaka)</span>
+                            <span class="feature-desc">通往寺院的繁華街道，沿途佈滿茶屋與餐廳，特別推薦品嚐京都著名的「生八橋」麻糬。</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="info-footer">
+                    <p><strong>交通：</strong>市巴士「五条坂」站步行約10分鐘。</p>
+                    <p><strong>設施：</strong>提供免費 Wi-Fi、無障礙動線、嬰兒車友善環境。</p>
+                </div>
+            </div>
+            </div>
             </div>
             <div class="image-side">
                 <img src="../images/清水寺.jpg" alt="清水寺">
@@ -33,7 +96,7 @@
             <div class="text-side">
                 <span class="category">FOOD</span>
                 <h2>京懷石料理</h2>
-                <p>這不只是食物，更是職人對旬味（時令）的極致追求，每一道菜都是一件藝術品。懷石料理講究視覺與味覺的平衡，讓旅人在靜謐的茶道精神中，品嚐大自然的饋贈。</p>
+                <p>這不只是食物，更是職人對旬味（時令）的極致追求，每一道菜都是一件藝術品。</p>
             </div>
             <div class="image-side">
                 <img src="../images/懷石料理.jpg" alt="懷石料理">
@@ -44,19 +107,36 @@
             <div class="text-side">
                 <span class="category">EXPERIENCE</span>
                 <h2>宇治抹茶</h2>
-                <p>作為日本茶文化的發源地，宇治抹茶以其翠綠的色澤與回甘的韻味聞名。走訪百年茶屋，親手刷一份抹茶，配上軟糯的蕨餅，這不僅是味蕾的享受，更是一場洗滌心靈的茶道儀式。</p>
+                <p>作為日本茶文化的發源地，宇治抹茶以其翠綠的色澤與回甘的韻味聞名。</p>
             </div>
             <div class="image-side">
-                <img src="../images/matcha.jpg" alt="宇治抹茶">
+                <img src="../images/宇治抹茶.jpg" alt="宇治抹茶">
             </div>
         </section>
-
     </main>
 
-    <footer style="text-align: center; padding: 60px; color: #ccc; font-size: 12px;">
+    <footer>
         &copy; 2026 Explore Japan. All rights reserved.
     </footer>
 
-</body>
+    <script>
+        // 滾動變色
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('.top-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
 
-</html>
+        // 搜尋框點擊展開
+        const searchBtn = document.querySelector('.search-btn');
+        const searchWrap = document.querySelector('.search-wrap');
+        searchBtn.addEventListener('click', () => {
+            searchWrap.classList.toggle('active');
+        });
+
+
+    </script>
+</body>

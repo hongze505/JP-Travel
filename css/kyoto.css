@@ -1,87 +1,319 @@
-
-/* --- 1. 基礎設定與變數 --- */
+/* ---------- [1] 共用變數與基礎設定 ---------- */
 :root {
-    --japan-red: #bc002d;
-    --text-gray: #4a4a4a;
-    --light-gray: #999;
-    --soft-white: #fafafa;
-    --border-color: #eee;
-   
+  --main-black: #111;
+  --text-gray: #666;
+  --soft-gray: #f5f5f5;
+  --japan-red: #c9171e;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: var(--text-gray);
-    line-height: 1.8;
+  margin: 0;
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  line-height: 1.8;
+  color: var(--text-gray); /* 依據原始要求保留 */
 }
 
-/* --- 2. 佈局容器：解決文字散開的關鍵 --- */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* ---------- [2] Top Nav (固定導覽列) ---------- */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
 }
 
-/* --- 3. 頂部封面區 (Hero) --- */
-.kyoto-hero {
-    height: 60vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('../images/kyoto-main.jpg') center/cover no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
+.top-nav.scrolled {
+  background-color: rgba(98, 97, 97, 0.85);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 30px;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  margin: 0;
+  font-size: 24px;
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
+  transition: font-size 0.3s ease;
+}
+
+.top-nav.scrolled .logo {
+  font-size: 18px;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+  flex: 1;
+  justify-content: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 3px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+
+nav a:hover {
+  background-size: 100% 3px;
+}
+
+.signin {
+  margin-left: auto;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 4px 10px rgba(0,0,0,.3);
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.signin:hover {
+  background-color: white;
+  color: var(--text-gray);
+}
+
+/* 搜尋按鈕區塊 */
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background-color: transparent;
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 25px;
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.search-btn:hover {
+  background-color: white;
+  color: var(--text-gray);
+}
+
+.search-icon svg {
+  stroke: white;
+  fill: none;
+  stroke-width: 2.4;
+  transition: stroke 0.3s ease;
+}
+
+.search-icon {
+display: flex;
+align-items: center;
+
+}
+.search-btn:hover .search-icon svg {
+  stroke: var(--text-gray);
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 6px 14px;
+  border: 1px solid white;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.search-wrap.active .search-input {
+  width: 180px;
+  opacity: 1;
+  background-color: white;
+  color: var(--main-black);
+}
+
+.search-wrap.active .search-text { display: none; }
+.search-wrap.active .search-btn { padding: 6px; width: 40px; justify-content: center; border-radius: 50%; }
+
+/* ---------- [3] Header & 標題動畫 ---------- */
+header.top {
+  background-image: url(../images/22031407_l.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  color: #f5f5f5;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+@keyframes titleEntrance {
+  0% { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.hero-content {
+  z-index: 10;
+  animation: titleEntrance 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .hero-label {
-    font-size: 14px;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
+  font-size: 1.1rem;
+  letter-spacing: 0.6em;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
 }
 
-.kyoto-hero h1 {
-    font-family: var(--serif-font);
-    font-size: clamp(2rem, 5vw, 3.5rem); /* 字體隨螢幕縮放 */
-    margin: 0;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+.hero-content h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+  letter-spacing: 7px;
 }
 
-/* --- 4. 介紹區塊佈局 (Grid) --- */
+.hero-content::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--japan-red);
+  margin: 30px auto 0;
+  transform: scaleX(0);
+  animation: lineExtend 1s 0.8s ease forwards;
+}
+
+@keyframes lineExtend { to { transform: scaleX(1); } }
+
+/* ---------- [4] 內容區塊 (Detail Blocks) ---------- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family:"Noto Sans JP",serif ;
+}
+
 .detail-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    padding: 100px 0;
-    border-bottom: 1px solid var(--border-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 120px 0;
+  position: relative;
+  
 }
 
-/* 讓圖片與文字左右反轉 */
-.detail-block.reverse {
-    direction: rtl;
-}
-.detail-block.reverse .text-side {
-    direction: ltr;
+
+.detail-block::after {
+  content: "......";
+  letter-spacing: 10px;
+  color: #ddd;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* --- 5. 圖片大小限制：解決圖很大的問題 --- */
+.detail-block.reverse { direction: rtl; }
+.detail-block.reverse .text-side { direction: ltr; }
+
+.category {
+  font-size: 0.9rem;
+  color: var(--japan-red);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.text-side h2 {
+ font-family:"Noto Sans JP",serif;
+  font-size: 2.8rem;
+  color: var(--main-black);
+  margin: 10px 0 25px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.text-side h2::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 50px; height: 2px;
+  background-color: var(--japan-red);
+}
+
+.detail-block.reverse .text-side h2::after { left: auto; right: 0; }
+
+.text-side p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 2;
+  text-align: justify;
+}
+
+/* 宇治抹茶標題特化 */
+.detail-block:nth-of-type(3) h2 { color: #2d5a27; }
+
+/* 圖片外框美化 */
 .image-side {
-    width: 100%;
-    height: 450px; /* 固定高度，防止圖片撐爆螢幕 */
-    overflow: hidden;
-    border-radius: 2px;
-    box-shadow: 20px 20px 0px var(--soft-white);
-    background-color: #f0f0f0;
+  position: relative;
+  height: 450px;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.image-side::before {
+  content: "";
+  position: absolute;
+  top: -15px; left: -15px; right: 15px; bottom: 15px;
+  border: 1px solid #ddd;
+  z-index: -1;
 }
 
 .image-side img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
 }
-/* 讓抹茶區塊的標題有一點深綠色的質感 */
-.detail-block:nth-of-type(3) h2 { color: #2d5a27; }
+
+.image-side:hover { transform: translateY(-10px); }
+.image-side:hover img { transform: scale(1.05); }
+
+.info-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+
+.info-footer strong {
+    color: var(--japan-red);
+    margin-right: 5px;
+}
