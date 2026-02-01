@@ -34,7 +34,7 @@
                     </div>
                     <input type="text" class="search-input" placeholder="Search..." />
                 </div>
-                <a href="./sign-in/sign-in.html" class="signin">Sign in</a>
+                <a href="../sign-in/sign-in.html" class="signin">Sign in</a>
             </div>
         </div>
 
@@ -129,12 +129,34 @@
             }
         });
 
-        // 搜尋框點擊展開
-        const searchBtn = document.querySelector('.search-btn');
         const searchWrap = document.querySelector('.search-wrap');
+        const searchBtn = document.querySelector('.search-btn');
+        const searchInput = document.querySelector('.search-input');
+
+        // 點擊搜尋按鈕，切換展開
         searchBtn.addEventListener('click', () => {
             searchWrap.classList.toggle('active');
+
+            // 如果展開，focus 輸入框
+            if (searchWrap.classList.contains('active')) {
+                searchInput.focus();
+            }
         });
+
+        // 按下 Enter 可以提交搜尋（可選）
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                alert(`搜尋: ${searchInput.value}`);
+                // 這裡可以改成真正搜尋功能
+            }
+        });
+        document.addEventListener('click', (e) => {
+            // 如果點擊不是 searchWrap 內部，收回
+            if (!searchWrap.contains(e.target)) {
+                searchWrap.classList.remove('active');
+            }
+        });
+
 
 
     </script>

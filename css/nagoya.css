@@ -157,7 +157,7 @@ align-items: center;
 
 /* ---------- [3] Header & 標題動畫 ---------- */
 header.top {
-  background-image: url(../images/22031407_l.jpg);
+  background-image: url(../images/nagoya4.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -187,6 +187,9 @@ header.top {
   color: rgba(255, 255, 255, 0.9);
   display: block;
 }
+
+/* 將這個字放在圖片背景中，透明度調低 */
+
 
 .hero-content h1 {
   font-family: 'Noto Serif JP', serif;
