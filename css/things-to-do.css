@@ -215,117 +215,68 @@ header.top {
 
 @keyframes lineExtend { to { transform: scaleX(1); } }
 
-/* ---------- [4] Destination 城市選擇區塊 (屏風設計) ---------- */
-.dest-wrapper {
-  max-width: 1300px;
-  margin: -50px auto 80px; /* 稍微往上提，壓在 Header 上增加設計感 */
-  padding: 0 20px;
-  position: relative;
-  z-index: 20;
+/* ---------- [實用指南] 頁面樣式 ---------- */
+.essentials-page {
+    padding: 150px 20px 100px;
+    background-color: #fff;
+    max-width: 900px; /* 縮小寬度，讓文字閱讀更集中 */
+    margin: 0 auto;
 }
 
-.dest-intro {
-  text-align: center;
-  margin-bottom: 40px;
-  background: white;
-  display: inline-block;
-  padding: 20px 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+.essentials-header {
+    text-align: center;
+    margin-bottom: 80px;
 }
 
-.dest-intro h2 {
-  font-family: 'Noto Serif JP', serif;
-  margin: 0;
-  letter-spacing: 0.3em;
-  color: var(--main-black);
+.essentials-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
-.city-grid {
-  display: flex;
-  gap: 15px;
-  height: 550px;
+.essential-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px;
+    border: 1px solid #eee; /* 淺灰色邊框 */
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-.city-panel {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: flex 0.7s cubic-bezier(0.25, 1, 0.3, 1);
+.essential-item:hover {
+    border-color: var(--japan-red);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.city-panel:hover {
-  flex: 2; /* 懸停時變寬 */
+.e-icon {
+    font-size: 40px;
+    background: #f9f9f9;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
 }
 
-.city-panel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s, filter 0.7s;
-  filter: brightness(0.8) grayscale(0.2);
+.e-text h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    color: var(--main-black);
 }
 
-.city-panel:hover img {
-  filter: brightness(1) grayscale(0);
-  transform: scale(1.1);
+.e-text p {
+    font-size: 15px;
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin: 0;
 }
 
-/* 城市文字疊加層 */
-.city-overlay {
-  position: absolute;
-  inset: 0;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.7) 100%);
-  color: white;
-}
 
-.city-name-v {
-  writing-mode: vertical-rl;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 2.8rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  border-right: 1px solid rgba(255,255,255,0.6);
-  padding-right: 10px;
-}
 
-.city-info {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.4s 0.3s;
-}
-
-.city-panel:hover .city-info {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.btn-view {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 8px 25px;
-  border: 1px solid white;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.btn-view:hover {
-  background: white;
-  color: var(--main-black);
-}
-
-/* 底部主題色條 */
-.tokyo-line { border-bottom: 6px solid var(--tokyo-blue); }
-.kyoto-line { border-bottom: 6px solid var(--kyoto-green); }
-.nagoya-line { border-bottom: 6px solid var(--nagoya-gold); }
 
 /* ---------- [5] Footer ---------- */
 footer {

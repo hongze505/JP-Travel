@@ -6,26 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destinations | Japan Travel Guide</title>
     <link rel="stylesheet" href="./css/destination.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header class="top">
         <div class="top-nav">
             <div class="nav-inner">
-
                 <h1 class="logo">Japan Travel Guide</h1>
-
                 <nav>
                     <a href="JP-Travel.html">Home</a>
                     <a href="destination.html">Destinations</a>
-                    <a href="Things to do.html">Things to do</a>
+                    <a href="Travel Essentials.html">Travel Essentials</a>
                     <a href="plan.html">Plan</a>
                 </nav>
 
                 <div class="search-wrap">
                     <div class="search-btn">
                         <span class="search-icon">
-                            <svg width="20" height="28" viewBox="0 0 24 24">
+                            <svg width="20" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <circle cx="11" cy="11" r="7" />
                                 <line x1="16" y1="16" x2="22" y2="22" />
                             </svg>
@@ -37,45 +37,87 @@
                 <a href="./sign-in/sign-in.html" class="signin">Sign in</a>
             </div>
         </div>
+
         <div class="hero-content">
-            <span class="hero-label">DESTINATIONS</span>
-            <h1>探索日本的城市風景</h1>
+            <h1>DESTINATI<span>O</span>NS</h1>
         </div>
     </header>
 
-    <main class="container">
+    <main class="dest-wrapper">
+        <div class="dest-intro">
+            <h2>行先案内</h2>
+
+        </div>
 
         <section class="city-grid">
-
-            <a href="./city/kyoto.html" class="city-card kyoto">
-                <div class="card-text">
-                    <h3>Kyoto</h3>
-                    <span>千年古都的靜謐時光</span>
+            <a href="./city/tokyo.html" class="city-panel tokyo-line">
+                <img src="./images/tokyotower.jpg" alt="Tokyo">
+                <div class="city-overlay">
+                    <div class="city-name-v">東京都</div>
+                    <div class="city-info">
+                        <h3>TOKYO</h3>
+                        <p>傳統與現代交織的世界之都</p>
+                        <span class="btn-view">探索東京</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="./city/tokyo.html" class="city-card tokyo">
-                <div class="card-text">
-                    <h3>Tokyo</h3>
-                    <span>傳統與現代交織的世界之都</span>
+            <a href="./city/kyoto.html" class="city-panel kyoto-line">
+                <img src="./images/kyoto.jpg" alt="Kyoto">
+                <div class="city-overlay">
+                    <div class="city-name-v">京都市</div>
+                    <div class="city-info">
+                        <h3>KYOTO</h3>
+                        <p>千年古都的靜謐時光</p>
+                        <span class="btn-view">探索京都</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="./city/nagoya.html" class="city-card nagoya">
-                <div class="card-text">
-                    <h3>Nagoya</h3>
-                    <span>戰國歷史與工匠精神</span>
+            <a href="./city/nagoya.html" class="city-panel nagoya-line">
+                <img src="./images/nagoya.jpg" alt="Nagoya">
+                <div class="city-overlay">
+                    <div class="city-name-v">名古屋</div>
+                    <div class="city-info">
+                        <h3>NAGOYA</h3>
+                        <p>戰國歷史與工匠精神</p>
+                        <span class="btn-view">探索名古屋</span>
+                    </div>
                 </div>
             </a>
-
         </section>
-
     </main>
 
     <footer>
-        &copy; 2026 Explore Japan. All rights reserved.
+        <p>&copy; 2026 Explore Japan. All rights reserved.</p>
     </footer>
 
+    <script>
+        /* 導覽列滾動變色 */
+        const topNav = document.querySelector('.top-nav');
+        window.addEventListener('scroll', () => {
+            window.scrollY > 50 ? topNav.classList.add('scrolled') : topNav.classList.remove('scrolled');
+        });
+
+        /* 搜尋框切換 */
+        const searchWrap = document.querySelector('.search-wrap');
+        const searchBtn = document.querySelector('.search-btn');
+        const searchInput = document.querySelector('.search-input');
+
+        searchBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            searchWrap.classList.toggle('active');
+            if (searchWrap.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!searchWrap.contains(e.target)) {
+                searchWrap.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Destinations | Japan Travel</title>
+    <link rel="stylesheet" href="./css/things-to-do.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!--------- header nav ---------->
+    <header class="top">
+        <div class="top-nav">
+            <div class="nav-inner">
+
+                <h1 class="logo">Japan Travel Guide</h1>
+
+                <nav>
+                    <a href="JP-Travel.html">Home</a>
+                    <a href="destination.html">Destinations</a>
+                    <a href="./Things to do.html">Travel Essentials</a>
+                    <a href="plan.html">Plan</a>
+                </nav>
+
+                <div class="search-wrap">
+                    <div class="search-btn">
+                        <span class="search-icon">
+                            <svg width="20" height="28" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="7" />
+                                <line x1="16" y1="16" x2="22" y2="22" />
+                            </svg>
+                        </span>
+                        <span class="search-text">Search</span>
+                    </div>
+                    <input type="text" class="search-input" placeholder="Search..." />
+                </div>
+                <a href="./sign-in/sign-in.html" class="signin">Sign in</a>
+            </div>
+        </div>
+
+        <div class="title-container">
+            <div class="title-main">
+                <div class="title-text">Expl<span>o</span>re Japan</div>
+                <div class="title-jp">未知の旅へ、日本を巡る</div>
+            </div>
+        </div>
+
+    </header>
+    <main class="essentials-page">
+        <section class="essentials-header">
+            <span class="jp-title">旅の準備</span>
+            <h2>TRAVEL ESSENTIALS</h2>
+            <p>在出發前往日本之前，這裡有您需要了解的所有實用資訊。</p>
+        </section>
+
+        <div class="essentials-grid">
+            <div class="essential-item">
+                <div class="e-icon">🚇</div>
+                <div class="e-text">
+                    <h3>交通方式 / Transport</h3>
+                    <p>推薦購買 JR Pass 或使用 Suica/Pasmo IC 卡，能讓您在城市間的移動更加順暢無阻。</p>
+                </div>
+            </div>
+
+            <div class="essential-item">
+                <div class="e-icon">🌐</div>
+                <div class="e-text">
+                    <h3>網路連接 / Connectivity</h3>
+                    <p>建議預訂機場取件的 Pocket WiFi 或購買 eSIM，確保在查地圖時隨時保有高速網路。</p>
+                </div>
+            </div>
+
+            <div class="essential-item">
+                <div class="e-icon">💴</div>
+                <div class="e-text">
+                    <h3>貨幣支付 / Currency</h3>
+                    <p>雖然多數商店接受信用卡，但在神社或小型食肆仍需備足現金。日本全國 ATM 領取現金非常方便。</p>
+                </div>
+            </div>
+
+            <div class="essential-item">
+                <div class="e-icon">🌡️</div>
+                <div class="e-text">
+                    <h3>氣候與穿著 / Weather</h3>
+                    <p>日本四季分明。建議採用「洋蔥式穿法」，並在出發前確認各地的平均氣溫。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    </main>
+
+    <!--------- js ---------->
+    <script>
+
+        const topNav = document.querySelector('.top-nav');
+
+        // 滾動變色
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                topNav.classList.add('scrolled');
+            } else {
+                topNav.classList.remove('scrolled');
+            }
+        });
+
+        const searchWrap = document.querySelector('.search-wrap');
+        const searchBtn = document.querySelector('.search-btn');
+        const searchInput = document.querySelector('.search-input');
+
+        // 點擊搜尋按鈕，切換展開
+        searchBtn.addEventListener('click', () => {
+            searchWrap.classList.toggle('active');
+
+            // 如果展開，focus 輸入框
+            if (searchWrap.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+
+        // 按下 Enter 可以提交搜尋（可選）
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                alert(`搜尋: ${searchInput.value}`);
+                // 這裡可以改成真正搜尋功能
+            }
+        });
+        document.addEventListener('click', (e) => {
+            // 如果點擊不是 searchWrap 內部，收回
+            if (!searchWrap.contains(e.target)) {
+                searchWrap.classList.remove('active');
+            }
+        });
+
+
+
+
+    </script>
+
+    <footer>
+        <p>© 2026 Japan Travel (Student Project)</p>
+    </footer>
+
+</body>
+
+</html>
