@@ -164,7 +164,7 @@ nav a:hover {
 
 
 header.top {
-  background-image: url(../images/fuji.jpg);
+  background-image: url(../images/fuji2.jpg);
   background-size: cover;
   background-position: center;
   height: 60vh; /* 目的地頁面建議改為 60vh，讓下方城市選單露出 */
@@ -189,7 +189,7 @@ header.top {
 }
 
 .hero-content h1 {
-  font-family: "Noto Sans JP", Arial, sans-serif;
+ font-family: 'Noto Serif JP', serif;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 700;
   margin: 0;
@@ -197,10 +197,10 @@ header.top {
   letter-spacing: 2px;
 }
 
-.hero-content span{
+/* .hero-content span{
   color: var(--japan-red);
   font-style: italic;
-}
+} */
 
 .hero-content::after {
   content: "";
@@ -228,6 +228,7 @@ header.top {
   text-align: center;
   margin-bottom: 40px;
   background: white;
+  color: #252D3A;
   display: inline-block;
   padding: 20px 40px;
   left: 50%;
@@ -327,11 +328,107 @@ header.top {
 .kyoto-line { border-bottom: 6px solid var(--kyoto-green); }
 .nagoya-line { border-bottom: 6px solid var(--nagoya-gold); }
 
-/* ---------- [5] Footer ---------- */
-footer {
-  text-align: center;
-  padding: 40px 0;
-  background: #1a1a1a;
-  color: #888;
-  font-size: 14px;
+
+/* ---------- [通用頁尾] 淺色版方案 A ---------- */
+.main-footer {
+    background-color: #f7f7f2; /* 方案 A 的米白色 */
+    color: #444;               /* 文字改為深灰，比較柔和 */
+    padding: 80px 20px 20px;
+    font-size: 14px;
+    border-top: 1px solid #eee; /* 淺色背景一定要加頂部線，層次感才會出來 */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+}
+
+.footer-brand .footer-logo {
+    font-size: 24px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: #333; /* 確保 Logo 在淺色背景下是深色的 */
+}
+
+.footer-brand .footer-logo span {
+    color: var(--japan-red);
+}
+
+.footer-brand p {
+    line-height: 1.8;
+    color: #777; /* 輔助文字轉淺灰 */
+    max-width: 300px;
+}
+
+.deco {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+    color: #333;
+}
+
+.deco::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 1px;
+    background: var(--japan-red);
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav ul li a {
+    color: #777;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-nav ul li a:hover {
+    color: var(--japan-red); /* 滑過時從灰轉紅，很精緻 */
+}
+
+.footer-contact p {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #777;
+    text-decoration: none;
+    font-size: 12px;
+    border: 1px solid #ddd; /* 淺色邊框 */
+    padding: 5px 10px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--japan-red);
+    color: #fff;
+    border-color: var(--japan-red);
+}
+
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    color: #aaa;
+    font-size: 12px;
 }

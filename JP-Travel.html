@@ -96,59 +96,83 @@
       </div>
     </section>
 
+    <!--------- js ---------->
+    <script>
 
-  </main>
+      const topNav = document.querySelector('.top-nav');
 
-  <!--------- js ---------->
-  <script>
+      // 滾動變色
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+          topNav.classList.add('scrolled');
+        } else {
+          topNav.classList.remove('scrolled');
+        }
+      });
 
-    const topNav = document.querySelector('.top-nav');
+      const searchWrap = document.querySelector('.search-wrap');
+      const searchBtn = document.querySelector('.search-btn');
+      const searchInput = document.querySelector('.search-input');
 
-    // 滾動變色
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        topNav.classList.add('scrolled');
-      } else {
-        topNav.classList.remove('scrolled');
-      }
-    });
+      // 點擊搜尋按鈕，切換展開
+      searchBtn.addEventListener('click', () => {
+        searchWrap.classList.toggle('active');
 
-    const searchWrap = document.querySelector('.search-wrap');
-    const searchBtn = document.querySelector('.search-btn');
-    const searchInput = document.querySelector('.search-input');
+        // 如果展開，focus 輸入框
+        if (searchWrap.classList.contains('active')) {
+          searchInput.focus();
+        }
+      });
 
-    // 點擊搜尋按鈕，切換展開
-    searchBtn.addEventListener('click', () => {
-      searchWrap.classList.toggle('active');
+      // 按下 Enter 可以提交搜尋（可選）
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          alert(`搜尋: ${searchInput.value}`);
+          // 這裡可以改成真正搜尋功能
+        }
+      });
+      document.addEventListener('click', (e) => {
+        // 如果點擊不是 searchWrap 內部，收回
+        if (!searchWrap.contains(e.target)) {
+          searchWrap.classList.remove('active');
+        }
+      });
 
-      // 如果展開，focus 輸入框
-      if (searchWrap.classList.contains('active')) {
-        searchInput.focus();
-      }
-    });
+    </script>
 
-    // 按下 Enter 可以提交搜尋（可選）
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        alert(`搜尋: ${searchInput.value}`);
-        // 這裡可以改成真正搜尋功能
-      }
-    });
-    document.addEventListener('click', (e) => {
-      // 如果點擊不是 searchWrap 內部，收回
-      if (!searchWrap.contains(e.target)) {
-        searchWrap.classList.remove('active');
-      }
-    });
+    <!--------- footer ---------->
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2 class="footer-logo">JAPAN<span>TRAVEL</span></h2>
+          <p>探索日本之美，從四季的流轉到城市的律動，為您預約下一場難忘的旅程。</p>
+          <div class="social-links">
+            <a href="#">IG</a>
+            <a href="#">FB</a>
+            <a href="#">YT</a>
+          </div>
+        </div>
 
+        <div class="footer-nav">
+          <h4 class="deco">快速連結 / NAVI</h4>
+          <ul>
+            <li><a href="JP-Travel.html">首頁首頁 / Home</a></li>
+            <li><a href="destination.html">熱門城市 / Destination</a></li>
+            <li><a href="Travel Essentials.html">旅遊指南 / Essentials</a></li>
+          </ul>
+        </div>
 
+        <div class="footer-contact">
+          <h4 class="deco">聯繫我們 / CONTACT</h4>
+          <p>Email: info@japantravel.jp</p>
+          <p>Address: 東京都渋谷区神宮前</p>
+        </div>
+      </div>
 
-
-  </script>
-
-  <footer>
-    <p>© 2026 Japan Travel (Student Project)</p>
-  </footer>
+      <div class="footer-bottom">
+        <p>&copy; 2026 JAPAN TRAVEL. All Rights Reserved. Designed by ZE.</p>
+      </div>
+    </footer>
 
 </body>
 

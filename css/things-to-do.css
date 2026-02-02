@@ -197,10 +197,7 @@ header.top {
   letter-spacing: 2px;
 }
 
-.hero-content span{
-  color: var(--japan-red);
-  font-style: italic;
-}
+
 
 .hero-content::after {
   content: "";

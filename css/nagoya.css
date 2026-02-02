@@ -318,14 +318,107 @@ header.top {
 .image-side:hover { transform: translateY(-10px); }
 .image-side:hover img { transform: scale(1.05); }
 
-.info-footer {
-    margin-top: 30px;
+/* ---------- [通用頁尾] 淺色版方案 A ---------- */
+.main-footer {
+    background-color: #f7f7f2; /* 方案 A 的米白色 */
+    color: #444;               /* 文字改為深灰，比較柔和 */
+    padding: 80px 20px 20px;
+    font-size: 14px;
+    border-top: 1px solid #eee; /* 淺色背景一定要加頂部線，層次感才會出來 */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+}
+
+.footer-brand .footer-logo {
+    font-size: 24px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: #333; /* 確保 Logo 在淺色背景下是深色的 */
+}
+
+.footer-brand .footer-logo span {
+    color: var(--japan-red);
+}
+
+.footer-brand p {
+    line-height: 1.8;
+    color: #777; /* 輔助文字轉淺灰 */
+    max-width: 300px;
+}
+
+.footer-nav h4, .footer-contact h4 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+    color: #333;
+}
+
+.footer-nav h4::after, .footer-contact h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 1px;
+    background: var(--japan-red);
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav ul li a {
+    color: #777;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-nav ul li a:hover {
+    color: var(--japan-red); /* 滑過時從灰轉紅，很精緻 */
+}
+
+.footer-contact p {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #777;
+    text-decoration: none;
+    font-size: 12px;
+    border: 1px solid #ddd; /* 淺色邊框 */
+    padding: 5px 10px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--japan-red);
+    color: #fff;
+    border-color: var(--japan-red);
+}
+
+.footer-bottom {
+    margin-top: 60px;
     padding-top: 20px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    color: #aaa;
+    font-size: 12px;
 }
 
-
-.info-footer strong {
-    color:var(--japan-red);
-    margin-right: 5px;
-}
