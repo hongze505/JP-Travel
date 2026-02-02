@@ -1,41 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/kyoto.css">
-    <title>Kyoto</title>
+    <title>Destinations | Japan Travel Guide</title>
+    <link rel="stylesheet" href="./css/destination.css">
 </head>
 
 <body>
-    <section class="city-hero">
-        <div class="hero-label">KYOTO / 京都市</div>
-        <h1>千年古都的靜謐時光</h1>
-    </section>
-    <section>
-        <div class="detail-block">
-            <div class="text-side">
-                <span class="category">SPOTS</span>
-                <h2>清水寺</h2>
-                <p>站在懸空的清水舞台，俯瞰四季變化的京都市景，是每個旅人對京都的第一印象。</p>
+    <header class="top">
+        <div class="top-nav">
+            <div class="nav-inner">
+
+                <h1 class="logo">Japan Travel Guide</h1>
+
+                <nav>
+                    <a href="JP-Travel.html">Home</a>
+                    <a href="destination.html">Destinations</a>
+                    <a href="Things to do.html">Things to do</a>
+                    <a href="plan.html">Plan</a>
+                </nav>
+
+                <div class="search-wrap">
+                    <div class="search-btn">
+                        <span class="search-icon">
+                            <svg width="20" height="28" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="7" />
+                                <line x1="16" y1="16" x2="22" y2="22" />
+                            </svg>
+                        </span>
+                        <span class="search-text">Search</span>
+                    </div>
+                    <input type="text" class="search-input" placeholder="Search..." />
+                </div>
+                <a href="./sign-in/sign-in.html" class="signin">Sign in</a>
             </div>
-            <div class="image">
-                <img src="../images/清水寺.jpg" alt="">
-            </div>
         </div>
-    </section>
-    <div class="detail-block reverse">
-        <div class="text-side">
-            <span class="category">FOOD</span>
-            <h2>京懷石料理</h2>
-            <p>這不只是食物，更是職人對旬味（時令）的極致追求，每一道菜都是一件藝術品。</p>
+        <div class="hero-content">
+            <span class="hero-label">DESTINATIONS</span>
+            <h1>探索日本的城市風景</h1>
         </div>
-        <div class="image-side">
-            <img src="../images/懷石料理.jpg" alt="懷石料理">
-        </div>
-    </div>
-    </section>
+    </header>
+
+    <main class="container">
+
+        <section class="city-grid">
+
+            <a href="./city/kyoto.html" class="city-card kyoto">
+                <div class="card-text">
+                    <h3>Kyoto</h3>
+                    <span>千年古都的靜謐時光</span>
+                </div>
+            </a>
+
+            <a href="./city/tokyo.html" class="city-card tokyo">
+                <div class="card-text">
+                    <h3>Tokyo</h3>
+                    <span>傳統與現代交織的世界之都</span>
+                </div>
+            </a>
+
+            <a href="./city/nagoya.html" class="city-card nagoya">
+                <div class="card-text">
+                    <h3>Nagoya</h3>
+                    <span>戰國歷史與工匠精神</span>
+                </div>
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Explore Japan. All rights reserved.
+    </footer>
+
 </body>
 
 </html>

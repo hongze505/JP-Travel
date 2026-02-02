@@ -25,7 +25,7 @@ body {
 }
 
 .top-nav.scrolled {
-  background-color:rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.8);
 }
 
 .nav-inner {
@@ -103,7 +103,6 @@ nav a:hover {
   padding: 6px 14px;
   border: 1px solid white;
   border-radius: 25px;
-  font-family: "Noto Sans JP", Arial, sans-serif;
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
@@ -157,7 +156,7 @@ align-items: center;
 
 /* ---------- [3] Header & 標題動畫 ---------- */
 header.top {
-  background-image: url(../images/嵐山.jpg);
+  background-image: url(../images/tokyotower.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -248,7 +247,7 @@ header.top {
   font-weight: 700;
   letter-spacing: 1px;
   
-  color: #3E2723;
+  color: #2D2926;
   margin: 10px 0 25px;
   position: relative;
   padding-bottom: 20px;
@@ -286,7 +285,7 @@ header.top {
 }
 
 /* 宇治抹茶標題特化 */
-.detail-block:nth-of-type(3) h2 { color: #2d5a27; }
+.detail-block:nth-of-type(3) h2 { color: #1C1C1C}
 
 /* 圖片外框美化 */
 .image-side {
@@ -296,13 +295,6 @@ header.top {
   transition: transform 0.4s ease;
 }
 
-/* .image-side::before {
-  content: "";
-  position: absolute;
-  top: -15px; left: -15px; right: 15px; bottom: 15px;
-  border: 1px solid #ddd;
-  z-index: -1;
-} */
 
 .image-side img {
   width: 100%;
@@ -325,3 +317,5 @@ header.top {
     color: var(--japan-red);
     margin-right: 5px;
 }
+
+

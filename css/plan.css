@@ -19,7 +19,7 @@ body {
   background: url('../images/pexels-apasaric-1344537.jpg');
   background-size: cover;
   background-position: 10% 55%;
-  height: 600px;
+  height: 70vh;
   color: white;
   position: relative;
 }
@@ -91,7 +91,7 @@ body {
 
 /* 滾動後 nav 背景變灰 */
 .top-nav.scrolled {
-  background-color: rgba(98, 97, 97, 0.85);
+  background-color: rgba(0,0,0,0.8);
 }
 
 

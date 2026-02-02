@@ -16,10 +16,10 @@ body {
 
 /* ---------- Header ---------- */ 
  header.top {
-  background-image: url(../images/pexels-evgeny-tchebotarev-1058775-2187605.jpg);
+  background-image: url(../images/首頁圖片.jpg);
   background-size: cover;
   background-position: 10% 55%;
-  height: 600px;
+  height: 100vh;
   color: white;
   position: relative;
 }
@@ -31,7 +31,7 @@ body {
 
 .title-container {
   position: absolute;
-  bottom: 15%;      /* 靠下方 */
+  bottom: 25%;      /* 靠下方 */
   left: 10%;        /* 靠左方，產生大量留白美感*/
   z-index: 10;
 }
@@ -42,6 +42,7 @@ body {
   display: flex;          /* 改用 flex */
   align-items: flex-start; /* 頂部對齊 */
   gap: 40px;              /* 直接設定間距，這裡可以調整你想要的距離 */
+
 }
 
 .title-text {
@@ -126,7 +127,7 @@ body {
 
 /* 滾動後 nav 背景變灰 */
 .top-nav.scrolled {
-  background-color: rgba(98, 97, 97, 0.85);
+  background-color:rgba(0,0,0,0.8);
 }
 
 
