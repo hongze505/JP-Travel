@@ -78,12 +78,8 @@
                         <input type="date" id="bw-date">
                     </div>
                     <div class="field">
-                        <label>Nights</label>
-                        <select id="bw-nights">
-                            <option>1 night</option>
-                            <option>2 nights</option>
-                            <option>3 nights</option>
-                        </select>
+                        <label>Check-out</label>
+                        <input type="date" id="bw-checkout">
                     </div>
                     <div class="field">
                         <label>People</label>
@@ -248,66 +244,67 @@
             });
         });
 
-        // Booking.com 搜尋
+        // --- 1. 防止日期選擇過去的時間 ---
+        const today = new Date().toISOString().split('T')[0];
+        // 抓取頁面上所有的日期輸入框並設定最小日期
+        const dateInputs = document.querySelectorAll('input[type="date"]');
+        dateInputs.forEach(input => {
+            input.setAttribute('min', today);
+        });
+
+        // --- 2. Booking.com 搜尋 (改為自由選擇退房日) ---
         document.getElementById("bw-search").addEventListener("click", () => {
             const city = document.getElementById("bw-city").value;
             const checkin = document.getElementById("bw-date").value;
-            const nights = parseInt(document.getElementById("bw-nights").value);
-            if (!checkin) { alert("Please select a check-in date"); return; }
+            const checkout = document.getElementById("bw-checkout").value;
 
-            const checkinDate = new Date(checkin);
-            const checkoutDate = new Date(checkinDate);
-            checkoutDate.setDate(checkoutDate.getDate() + nights);
-            const checkout = checkoutDate.toISOString().split("T")[0];
+            if (!checkin || !checkout) {
+                alert("請選擇入住與退房日期");
+                return;
+            }
+            if (checkout <= checkin) {
+                alert("退房日期必須在入住日期之後");
+                return;
+            }
 
-            const url =
-                `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(city)}&checkin=${checkin}&checkout=${checkout}`;
+            const url = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(city)}&checkin=${checkin}&checkout=${checkout}&lang=zh-tw`;
             window.open(url, "_blank");
         });
 
-        // Flights Skyscanner 搜尋
+        // --- 3. Activities Klook (改為中文頁面) ---
+        document.getElementById("act-search").addEventListener("click", () => {
+            const city = document.getElementById("act-city").value;
+            const date = document.getElementById("act-date").value;
+            if (!date) { alert("請選擇日期"); return; }
+
+            // 將 en-US 改為 zh-TW
+            const url = `https://www.klook.com/zh-TW/search?query=${encodeURIComponent(city)}`;
+            window.open(url, "_blank");
+        });
+
+        // --- 4. 飛機航班 (增加回程日期檢查) ---
         document.getElementById("flight-search").addEventListener("click", () => {
-            const from = "tpe"; // Taipei
-            const to = document.getElementById("flight-to").value; // nrt / hnd / ngo / kix
+            const from = "tpe";
+            const to = document.getElementById("flight-to").value;
             const depart = document.getElementById("flight-depart").value;
             const ret = document.getElementById("flight-return").value;
             const people = document.getElementById("flight-people").value;
 
-            if (!depart) {
-                alert("Please select departure date");
+            if (!depart) { alert("請選擇出發日期"); return; }
+            if (ret && ret <= depart) {
+                alert("回程日期必須在出發日期之後");
                 return;
             }
 
             const departDate = depart.replace(/-/g, "");
             const returnDate = ret ? ret.replace(/-/g, "") : "";
+            let url = `https://www.skyscanner.com.tw/transport/flights/${from}/${to}/${departDate}/`; // 改為台灣站
 
-            let url = `https://www.skyscanner.com/transport/flights/${from}/${to}/${departDate}/`;
-
-            if (returnDate) {
-                url += `${returnDate}/`;
-            }
-
+            if (returnDate) { url += `${returnDate}/`; }
             url += `?adultsv2=${people}`;
 
             window.open(url, "_blank");
-
-
-
         });
-
-
-
-
-
-        // Activities Klook
-        document.getElementById("act-search").addEventListener("click", () => {
-            const city = document.getElementById("act-city").value;
-            const date = document.getElementById("act-date").value;
-            if (!date) { alert("Please select a date"); return; }
-            const url = `https://www.klook.com/en-US/search?query=${encodeURIComponent(city)}`;
-            window.open(url, "_blank");
-        });
-
         // Food 日本訂餐網站（以 tabelog 範例）
         document.getElementById("food-search").addEventListener("click", () => {
             const city = document.getElementById("food-city").value;
